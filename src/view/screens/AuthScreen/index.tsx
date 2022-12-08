@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { View, Text } from "react-native"
-import * as usersActions from "_/actions/usersAction"
+import * as usersActions from "_/actions/usersActions"
 import { useAppDispatch } from "_/hooks/useAppDispatch"
 import { useAppSelector } from "_/hooks/useAppSelector"
 
