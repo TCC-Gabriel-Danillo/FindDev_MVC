@@ -1,5 +1,6 @@
 # FindDev_MVC
 
+[![codecov](https://codecov.io/github/TCC-Gabriel-Danillo/FindDev_MVC/branch/main/graph/badge.svg?token=4655GHLADL)](https://codecov.io/github/TCC-Gabriel-Danillo/FindDev_MVC)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=TCC-Gabriel-Danillo_FindDev_MVC&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=TCC-Gabriel-Danillo_FindDev_MVC)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=TCC-Gabriel-Danillo_FindDev_MVC&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=TCC-Gabriel-Danillo_FindDev_MVC)
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=TCC-Gabriel-Danillo_FindDev_MVC&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=TCC-Gabriel-Danillo_FindDev_MVC)
