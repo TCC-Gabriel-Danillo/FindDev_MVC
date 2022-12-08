@@ -8,10 +8,6 @@ module.exports = function(api) {
         {
           alias: {
             '_assets': './assets',
-            '_actions': './src/actions',
-            '_store': './src/store',
-            '_types': './src/types',
-            '_views': './src/views',
             "_": "./src"
           },
           extensions: [
