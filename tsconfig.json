@@ -4,9 +4,8 @@
     "strict": true, 
     "baseUrl": ".", 
     "paths": {
-      "_actions/*": ["src/actions/*"], 
-      "_store/*": ["src/store/*"], 
-      "_view/*": ["src/view/*"], 
+      "_assets/*": ["assets/*"],
+      "_/*": ["src/*"]
     }
-  }
+  },
 }
