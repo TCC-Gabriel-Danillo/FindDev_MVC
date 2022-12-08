@@ -1,5 +1,5 @@
 import { Dispatch } from "@reduxjs/toolkit"
-import { addUsers } from "_/store/userStore"
+import { addUsers } from "_/store/usersStore"
 
 export const getUsersAction = () => {
     return (dispatch: Dispatch) => {
