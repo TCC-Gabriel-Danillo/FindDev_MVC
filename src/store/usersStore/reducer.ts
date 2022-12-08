@@ -21,7 +21,7 @@ export const usersSlice = createSlice({
             state.isLoading = false
         }
     },
-  })
+})
   
 export const { addUsers, usersLoaded, usersLoading } = usersSlice.actions 
 export const usersReducer =  usersSlice.reducer
