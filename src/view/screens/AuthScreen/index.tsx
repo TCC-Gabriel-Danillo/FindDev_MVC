@@ -1,11 +1,12 @@
 import { useEffect } from "react"
 import { View, Text } from "react-native"
 import * as usersActions from "_/actions/usersActions"
+import { useUsersSelector } from "_/hooks"
 import { useAppDispatch } from "_/hooks/useAppDispatch"
-import { useAppSelector } from "_/hooks/useAppSelector"
 
 export function AuthScreen(){
-    const { users } = useAppSelector((state) => state.usersState)
+    
+    const { users } = useUsersSelector()
     const dispatch = useAppDispatch()
     
     console.log({ users })
