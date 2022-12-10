@@ -1,0 +1,4 @@
+export enum NAVIGATION_SCREENS {
+    AUTH_SCREEN = "AUTH_SCREEN",
+    MAP_SCREEN = "MAP_SCREEN"
+}
