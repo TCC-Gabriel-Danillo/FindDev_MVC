@@ -1,8 +1,8 @@
-import { DatabaseRepository, HttpRepository } from "_/repositories"
+import { DatabaseRepository } from "_/repositories"
+import { AuthService } from "_/services/authService"
 
 export type ThunkArgs = {
-    gitHubApi: HttpRepository,
-    gitHubAuthApi: HttpRepository,
+    authService: AuthService
     userDatabaseRepository: DatabaseRepository
 }
 
