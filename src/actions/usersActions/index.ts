@@ -5,14 +5,14 @@ export const getUsersAction = () => {
     return (dispatch: Dispatch) => {
         dispatch(addUsers([
             {
-                geohash: "geohash", 
-                id: 100, 
+                id: 100,
                 position: {
-                    latitude: 0, 
-                    longitude: 0, 
-                }, 
-                profileUrl: "profileUrl", 
-                username: "username", 
+                    latitude: 0,
+                    longitude: 0,
+                    geohash: "",
+                },
+                profileUrl: "profileUrl",
+                username: "username",
 
             }
         ]))
