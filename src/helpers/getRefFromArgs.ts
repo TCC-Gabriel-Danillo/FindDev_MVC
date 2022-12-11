@@ -6,7 +6,7 @@ import {
     Query,
     orderBy
 } from 'firebase/firestore';
-import { ORDER, QueryOptions } from '../types';
+import { ORDER, QueryOptions } from '../repositories/database/types';
 
 
 export const getRefFromArgs = (collection: CollectionReference<DocumentData>, options?: QueryOptions): Query<DocumentData> => {
