@@ -1,12 +1,12 @@
 import axios, { AxiosInstance, AxiosError } from "axios";
 import { ErrorFromRes, ServerError } from "./errors"
-import { HttpRepository } from "./types"
+import { HttpAdapter } from "./types"
 
 const headers = {
     'Content-Type': 'application/json'
 };
 
-export class HttpRepositoryImp implements HttpRepository {
+export class HttpAdapterImp implements HttpAdapter {
     api: AxiosInstance;
     constructor(baseURL: string) {
         this.api = axios.create({
