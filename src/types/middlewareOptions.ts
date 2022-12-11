@@ -1,9 +1,9 @@
-import { DatabaseRepository } from "_/repositories"
 import { AuthService } from "_/services/authService"
+import { UserService } from "_/services/userService"
 
 export type ThunkArgs = {
     authService: AuthService
-    userDatabaseRepository: DatabaseRepository
+    userService: UserService
 }
 
 export type MiddlewareOptions = {

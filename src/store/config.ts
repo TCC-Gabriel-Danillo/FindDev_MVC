@@ -1,20 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { usersReducer } from "./usersStore"
 import { authReducer } from "./authStore"
-import {
-  DatabaseRepositoryImp
-} from '_/repositories'
-import {
-  HttpAdapterImp
-} from "_/adapters"
+import { DatabaseRepositoryImp } from '_/repositories'
+import { HttpAdapterImp, LocationAdapterImp } from "_/adapters"
 import { FIREBASE_COLLECTION, GITHUB_URL } from '_/constants'
 import { MiddlewareOptions } from '_/types'
 import { AuthServiceImp } from '_/services/authService'
+import { UserServiceImp } from '_/services/userService'
 
 
 const gitApi = new HttpAdapterImp(GITHUB_URL.API_BASE_URL)
 const gitAuth = new HttpAdapterImp(GITHUB_URL.AUTH_BASE_URL)
 const authService = new AuthServiceImp(gitApi, gitAuth)
+
+const locationAdatper = new LocationAdapterImp()
+const userDatabaseRepository = new DatabaseRepositoryImp(FIREBASE_COLLECTION.USERS)
+const userService = new UserServiceImp(locationAdatper, userDatabaseRepository)
 
 export const store = configureStore({
   reducer: {
@@ -26,7 +27,7 @@ export const store = configureStore({
       thunk: {
         extraArgument: {
           authService,
-          userDatabaseRepository: new DatabaseRepositoryImp(FIREBASE_COLLECTION.USERS)
+          userService
         }
       }
     })
