@@ -19,7 +19,7 @@ export class UserServiceImp implements UserService {
 
     async createUser(user: User) {
         const fUser = mapUserToFirebaseUser(user)
-        await this.userDatabaseRepository.createOrReplace(fUser)
+        await this.userDatabaseRepository.createOrReplace(fUser, fUser.username)
     }
 
 } 
