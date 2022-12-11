@@ -1,5 +1,6 @@
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
+import { AuthCredentials } from '_/types';
 import {
     GIT_CLIENT_ID,
     GIT_REVOCATION_ENDPOINT,
@@ -17,14 +18,9 @@ const discovery = {
     revocationEndpoint: GIT_REVOCATION_ENDPOINT,
 };
 
-export interface AuthResponse {
-    code: string
-    client_id: string
-    client_secret: string
-}
 
 export interface AuthPromptService {
-    promptAuth: () => Promise<AuthResponse>
+    promptAuth: () => Promise<AuthCredentials>
 }
 
 export function useAuthPrompt(): AuthPromptService {
@@ -39,7 +35,7 @@ export function useAuthPrompt(): AuthPromptService {
         discovery
     );
 
-    const promptAuth = async (): Promise<AuthResponse> => {
+    const promptAuth = async (): Promise<AuthCredentials> => {
         const promptResponse = await promptAsync();
         if (promptResponse.type !== 'success') throw new Error("Algo deu errado ao tentar logar.")
         const { code } = promptResponse.params
