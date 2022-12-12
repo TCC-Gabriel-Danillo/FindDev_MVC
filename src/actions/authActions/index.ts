@@ -13,9 +13,8 @@ export const authenticateAction = (credentials: AuthCredentials): AppThunk => {
 
             const position = await userService.getUserPosition()
             const newUser = mapAuthResponseToUser(authResponse, position)
-
-            dispatch(addUser(newUser))
             await userService.createUser(newUser)
+            dispatch(addUser(newUser))
         } catch (err) {
             console.error(err)
             Alert.alert("Algo deu errado ao tentar logar.")

@@ -7,6 +7,7 @@ export const mapAuthResponseToUser = (authResponse: AuthResponse, position: Posi
         profileUrl: authResponse.profileUrl,
         techs: authResponse.techs,
         username: authResponse.username,
+        photoUrl: authResponse.photoUrl,
         position
     }
 }

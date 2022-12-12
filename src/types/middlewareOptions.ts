@@ -9,5 +9,6 @@ export type ThunkArgs = {
 export type MiddlewareOptions = {
     thunk: {
         extraArgument: ThunkArgs
-    }
+    },
+    serializableCheck: boolean
 }
