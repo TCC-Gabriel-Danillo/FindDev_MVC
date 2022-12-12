@@ -13,7 +13,7 @@ import {
     parseFirebaseSnapshot,
     parseCollection,
     getRefFromArgs
-} from "../../helpers"
+} from "_/helpers"
 
 import { DatabaseRepository, QueryOptions } from './types';
 export class DatabaseRepositoryImp implements DatabaseRepository {

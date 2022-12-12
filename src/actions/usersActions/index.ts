@@ -1,8 +1,9 @@
 import { Dispatch } from "@reduxjs/toolkit"
 import { addUsers } from "_/store/usersStore"
+import { AppThunk } from "_/types"
 
-export const getUsersAction = () => {
-    return (dispatch: Dispatch) => {
+export const getUsersAction = (): AppThunk => {
+    return (dispatch: Dispatch, getState, { userService }) => {
         dispatch(addUsers([
             {
                 id: 100,
