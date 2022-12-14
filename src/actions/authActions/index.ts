@@ -24,7 +24,7 @@ export const authenticateAction = (credentials: AuthCredentials): AppThunk => {
 }
 
 export const logoutAction = (): AppThunk => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(addUser())
     }
 }

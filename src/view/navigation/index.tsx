@@ -1,15 +1,21 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
 import { AuthScreen, MapScreen } from "_/view/screens"
 import { NAVIGATION_SCREENS } from "_/constants"
-import { useAuthSelector } from "_/hooks"
+import { useAppDispatch, useAuthSelector } from "_/hooks"
+import { onAppLoaded } from "_/actions"
 
 const Stack = createNativeStackNavigator()
 
 export function Routes() {
 
+    const dispatch = useAppDispatch()
     const { isAuthenticated } = useAuthSelector()
+
+    useEffect(() => {
+        dispatch(onAppLoaded())
+    }, [])
 
     return (
         <NavigationContainer>

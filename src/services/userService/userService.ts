@@ -35,4 +35,9 @@ export class UserServiceImp implements UserService {
         await this.userDatabaseRepository.createOrReplace(fUser, fUser.username)
     }
 
+    async updateUser(user: User) {
+        const fUser = mapUserToFirebaseUser(user)
+        await this.userDatabaseRepository.update(fUser, fUser.username)
+    }
+
 } 
