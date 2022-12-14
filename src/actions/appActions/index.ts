@@ -10,8 +10,8 @@ export const onAppLoaded = (): AppThunk => {
 
             if (!user) return
 
-            const position = await userService.getUserPosition()
-            const newUser = { ...user, position }
+            const updatedPosition = await userService.getUserPosition()
+            const newUser = { ...user, position: updatedPosition }
 
             dispatch(addUser(newUser))
 
