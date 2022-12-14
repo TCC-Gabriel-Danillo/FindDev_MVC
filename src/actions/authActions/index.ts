@@ -1,5 +1,4 @@
-import { Alert } from "react-native"
-import { mapAuthResponseToUser } from "_/helpers"
+import { alertError, mapAuthResponseToUser } from "_/helpers"
 import { addUser, authLoaded, authLoading } from "_/store/authStore"
 import { AuthCredentials } from "_/types"
 import { AppThunk } from "_/types/appThunk"
@@ -17,7 +16,7 @@ export const authenticateAction = (credentials: AuthCredentials): AppThunk => {
             dispatch(addUser(newUser))
         } catch (err) {
             console.error(err)
-            Alert.alert("Algo deu errado ao tentar logar.")
+            alertError("Algo deu errado ao tentar logar.")
         } finally {
             dispatch(authLoaded())
         }
