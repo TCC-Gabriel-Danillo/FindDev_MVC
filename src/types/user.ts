@@ -1,6 +1,10 @@
-export type Position = {
+export type LatLng = {
     latitude: number
     longitude: number
+}
+
+export type Position = {
+    location: LatLng
     geohash: string
 }
 
