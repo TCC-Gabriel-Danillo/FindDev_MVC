@@ -8,7 +8,11 @@ export const mapUserToFirebaseUser = (user: User): FirebaseUserDto => {
         username: user.username,
         photoUrl: user.photoUrl,
         techs: user.techs,
-        position: user.position,
+        position: {
+            latitude: user.position.location.latitude,
+            longitude: user.position.location.longitude,
+            geohash: user.position.geohash
+        },
         profileUrl: user.profileUrl
     }
 }

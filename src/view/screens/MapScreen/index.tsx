@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MapView, { Marker, Callout, Region } from 'react-native-maps';
 import { Image, View } from 'react-native';
 import { Button, Text } from '_/view/components';
@@ -9,11 +9,19 @@ import { COLORS, ICONS } from '_/constants';
 import { User } from '_/types';
 import { useAppDispatch, useAuthSelector, useUsersSelector } from '_/hooks';
 import { logoutAction } from '_/actions/authActions';
+import { getUsersAction } from '_/actions/usersActions';
 
 export function MapScreen() {
     const { user: authUser } = useAuthSelector()
     const { users } = useUsersSelector()
     const dispatch = useAppDispatch()
+
+    const initialRegion = {
+        latitude: Number(authUser?.position.location.latitude),
+        longitude: Number(authUser?.position.location.longitude),
+        latitudeDelta: 0.05,
+        longitudeDelta: 0.05,
+    }
 
     const handleCalloutPress = async (user: User) => {
         await Linking.openURL(user.profileUrl);
@@ -23,19 +31,20 @@ export function MapScreen() {
         dispatch(logoutAction())
     }
 
+    useEffect(() => {
+        const { latitude, longitude } = initialRegion
+        dispatch(getUsersAction({ latitude, longitude }))
+    }, [])
+
 
     return (
         <View style={styles.container}>
             <MapView style={styles.map}
                 onRegionChangeComplete={(region: Region) => {
                     const { latitude, longitude } = region
+                    dispatch(getUsersAction({ latitude, longitude }))
                 }}
-                initialRegion={{
-                    latitude: Number(authUser?.position.latitude),
-                    longitude: Number(authUser?.position.longitude),
-                    latitudeDelta: 0.05,
-                    longitudeDelta: 0.05,
-                }}
+                initialRegion={initialRegion}
                 maxZoomLevel={14}
                 minZoomLevel={3.5}
             >
@@ -45,8 +54,8 @@ export function MapScreen() {
                             <Marker
                                 key={user.id}
                                 coordinate={{
-                                    latitude: user.position.latitude,
-                                    longitude: user.position.longitude
+                                    latitude: user.position.location.latitude,
+                                    longitude: user.position.location.longitude
                                 }}
                                 image={makerImg}
                             >
