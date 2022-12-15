@@ -8,9 +8,12 @@ const defaultDistanceInM = 10 * 1000;
 export const getUsersAction = (location: LatLng): AppThunk => {
     return async (dispatch: Dispatch, getState, { userService }) => {
         try {
+            const { auth: { user: authUser } } = getState()
             dispatch(usersLoading())
             const users = await userService.listUsersByDistance(location, defaultDistanceInM)
-            dispatch(addUsers(users))
+            const usersWithoutAuthed = users.filter(user => user.id !== authUser?.id)
+            dispatch(addUsers(usersWithoutAuthed))
+
         } catch (err) {
             console.error(err)
             alertError("Algo deu errado ao recuperar usuários.")
