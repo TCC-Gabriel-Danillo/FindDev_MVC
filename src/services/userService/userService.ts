@@ -1,7 +1,9 @@
 import { LocationAdapter } from "_/adapters";
+import { mapFirebaseUserToUser } from "_/helpers";
 import { mapUserToFirebaseUser } from "_/helpers/mapUserToFirebaseUser";
 import { DatabaseRepository, QueryOptions } from "_/repositories";
 import { User, LatLng } from "_/types";
+import { FirebaseUserDto } from "./dto";
 import { UserService } from "./types";
 
 export class UserServiceImp implements UserService {
@@ -19,8 +21,9 @@ export class UserServiceImp implements UserService {
                 entAt: boundEnd
             }
         }
-        const users = await this.userDatabaseRepository.getAll<User>(args)
-        return users
+        const fUsers = await this.userDatabaseRepository.getAll<FirebaseUserDto>()
+
+        return fUsers.map(fUser => mapFirebaseUserToUser(fUser))
     }
 
     async getUserPosition() {
@@ -32,12 +35,12 @@ export class UserServiceImp implements UserService {
 
     async createUser(user: User) {
         const fUser = mapUserToFirebaseUser(user)
-        await this.userDatabaseRepository.createOrReplace(fUser, fUser.username)
+        await this.userDatabaseRepository.createOrReplace(fUser, fUser.id)
     }
 
     async updateUser(user: User) {
         const fUser = mapUserToFirebaseUser(user)
-        await this.userDatabaseRepository.update(fUser, fUser.username)
+        await this.userDatabaseRepository.update(fUser, fUser.id)
     }
 
 } 
