@@ -24,8 +24,6 @@ export class LocationAdapterImp implements LocationAdapter {
 
     generateGeoHashBounds(location: LatLng, distanceInM: number): Bounds {
         const bounds = generateHashBounds(location, distanceInM)
-        const boundStart = bounds[0]
-        const boundEnd = bounds[1]
-        return [boundStart, boundEnd]
+        return bounds
     }
 }

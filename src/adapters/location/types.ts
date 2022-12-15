@@ -8,4 +8,4 @@ export interface LocationAdapter {
 
 type GeopHash = string;
 type GeoHashRange = [GeopHash, GeopHash]
-export type Bounds = [GeoHashRange, GeoHashRange]
+export type Bounds = GeoHashRange[]

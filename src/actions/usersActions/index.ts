@@ -3,7 +3,7 @@ import { alertError } from "_/helpers";
 import { addUsers, usersLoading, usersLoaded } from "_/store/usersStore"
 import { AppThunk, LatLng } from "_/types"
 
-const defaultDistanceInM = 10 * 1000;
+const defaultDistanceInM = 5 * 1000;
 
 export const getUsersAction = (location: LatLng): AppThunk => {
     return async (dispatch: Dispatch, getState, { userService }) => {

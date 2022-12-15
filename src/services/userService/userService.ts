@@ -5,6 +5,7 @@ import { DatabaseRepository, QueryOptions } from "_/repositories";
 import { User, LatLng } from "_/types";
 import { FirebaseUserDto } from "./dto";
 import { UserService } from "./types";
+import _ from "lodash"
 
 export class UserServiceImp implements UserService {
     constructor(
@@ -13,16 +14,22 @@ export class UserServiceImp implements UserService {
     ) { }
 
     async listUsersByDistance(location: LatLng, distanceInM: number): Promise<User[]> {
-        const [boundStart, boundEnd] = this.locationAdatper.generateGeoHashBounds(location, distanceInM)
-        const args: QueryOptions = {
-            orderArgs: {
-                field: "position.geohash",
-                startAt: boundStart,
-                entAt: boundEnd
-            }
-        }
-        const fUsers = await this.userDatabaseRepository.getAll<FirebaseUserDto>()
+        const bounds = this.locationAdatper.generateGeoHashBounds(location, distanceInM)
+        const promisses = []
 
+        for (let b of bounds) {
+            const [boundStart, boundEnd] = b
+            const args: QueryOptions = {
+                orderArgs: {
+                    field: "position.geohash",
+                    startAt: boundStart,
+                    entAt: boundEnd
+                }
+            }
+            promisses.push(this.userDatabaseRepository.getAll<FirebaseUserDto>(args))
+
+        }
+        const fUsers = _.flatMapDeep(await Promise.all(promisses))
         return fUsers.map(fUser => mapFirebaseUserToUser(fUser))
     }
 
