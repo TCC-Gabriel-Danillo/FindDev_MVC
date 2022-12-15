@@ -9,7 +9,7 @@ export type Position = {
 }
 
 export interface User {
-    id: number
+    id: string
     username: string
     profileUrl: string
     position: Position

@@ -25,7 +25,7 @@ export class AuthServiceImp implements AuthService {
         const techs = this.getTechsInfoFromGitRepos(gitRepos)
 
         return {
-            id: gitUser.id,
+            id: String(gitUser.id),
             profileUrl: gitUser.html_url,
             username: gitUser.login,
             email: gitUser.email,

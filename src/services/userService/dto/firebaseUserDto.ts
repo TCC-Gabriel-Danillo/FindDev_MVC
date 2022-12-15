@@ -1,6 +1,6 @@
 export interface FirebaseUserDto {
     username: string
-    id: number
+    id: string
     photoUrl?: string
     email?: string
     techs?: Array<string>

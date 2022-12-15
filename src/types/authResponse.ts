@@ -1,5 +1,5 @@
 export interface AuthResponse {
-    id: number
+    id: string
     username: string
     profileUrl: string
     photoUrl?: string
