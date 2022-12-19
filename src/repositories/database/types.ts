@@ -7,15 +7,17 @@ export enum OP {
     CONTAINS = "array-contains",
     IN = "in"
 }
-export interface FilterArgs {
+export interface FilterArgs<T = any> {
     field: string;
     op: OP;
-    value: any
+    value: T
 }
 
-export interface OrderArgs {
+export interface OrderArgs<T = any> {
     field: string
     order?: ORDER
+    startAt?: T;
+    entAt?: T
 }
 
 export interface QueryOptions {

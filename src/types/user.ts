@@ -1,11 +1,15 @@
-export type Position = {
+export type LatLng = {
     latitude: number
     longitude: number
+}
+
+export type Position = {
+    location: LatLng
     geohash: string
 }
 
 export interface User {
-    id: number
+    id: string
     username: string
     profileUrl: string
     position: Position
