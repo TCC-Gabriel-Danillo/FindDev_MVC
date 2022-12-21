@@ -22,6 +22,7 @@ export function renderWithProviders(
         preloadedState = {},
         // Automatically create a store instance if no store was passed in
         store = setupStore({
+            preloadedState,
             authService: new AuthServiceStub(),
             userService: new UserServiceStub()
         }),
