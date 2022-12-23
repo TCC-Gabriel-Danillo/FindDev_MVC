@@ -47,6 +47,7 @@
     "@types/lodash": "^4.14.191",
     "@types/react": "~18.0.14",
     "@types/react-native": "~0.70.6",
+    "@types/react-test-renderer": "^18.0.0",
     "typescript": "^4.6.3"
   },
   "private": true

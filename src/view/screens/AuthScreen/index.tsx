@@ -3,7 +3,7 @@ import { View, Image, ActivityIndicator } from 'react-native';
 import { Text, Button } from "_/view/components"
 import devImg from "_/assets/dev.png"
 import { styles } from './styles';
-import { COLORS } from '_/constants';
+import { COLORS, TEST_ID } from '_/constants';
 import { useAppDispatch, useAuthSelector } from '_/hooks';
 import { authenticateAction } from '_/actions/authActions';
 import { useAuthPrompt } from '_/hooks/useAuthPrompt';
@@ -26,7 +26,7 @@ export const AuthScreen: React.FC = () => {
 
             <Image source={devImg} style={styles.img} />
 
-            <Button onPress={signIn} style={styles.button} disabled={isAuthenticated}>
+            <Button testID={TEST_ID.LOGIN_BUTTON} onPress={signIn} style={styles.button} disabled={isAuthenticated}>
                 {isLoading ? <ActivityIndicator color={COLORS.WHITE} /> : "Entrar com Github"}
             </Button>
         </View>
