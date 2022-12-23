@@ -1,4 +1,4 @@
-import { fireEvent } from "@testing-library/react-native"
+import { fireEvent, render } from "@testing-library/react-native"
 import { act } from 'react-test-renderer';
 import { TEST_ID } from "_/constants"
 import { setupStore } from "_/store"
@@ -6,9 +6,9 @@ import { AuthScreen } from "_/view/screens"
 import { AuthServiceStub } from "../mocks/authServiceStub"
 import { UserServiceStub } from "../mocks/userServiceStub"
 import { renderWithProviders } from "../utils/renderWithProvider"
+import * as AlertErrorHelper from "_/helpers/alertHelper"
 
-
-describe("Authentication", () => {
+describe("[AuthScreen] Authentication", () => {
     it("should call the authenticate method on button press", async () => {
         const authService = new AuthServiceStub()
         const userService = new UserServiceStub()
@@ -38,7 +38,6 @@ describe("Authentication", () => {
         const userService = new UserServiceStub()
 
         jest.spyOn(authService, 'authenticateGithub').mockImplementationOnce(() => Promise.resolve(undefined));
-        const createUserSpy = jest.spyOn(userService, 'createUser');
 
         const { findByTestId } = renderWithProviders(<AuthScreen />, {
             store: setupStore({ authService, userService }),
@@ -50,8 +49,7 @@ describe("Authentication", () => {
             fireEvent.press(button);
         });
 
-        expect(createUserSpy).not.toBeCalled()
-
+        expect(AlertErrorHelper.alertError).toHaveBeenCalled()
 
     })
 })

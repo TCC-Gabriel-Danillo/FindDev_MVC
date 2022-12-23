@@ -11,3 +11,6 @@ jest.mock("../hooks/useAuthPrompt", () => ({
         })
     })
 }))
+
+import * as AlertErrorHelper from "_/helpers/alertHelper"
+jest.spyOn(AlertErrorHelper, 'alertError');

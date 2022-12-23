@@ -17,3 +17,16 @@ export const mockReposRequest = () => {
 export const mockAuthTokenRequest = () => {
     nock(GITHUB_URL.AUTH_BASE_URL).post('/access_token').reply(200, { access_token: "token" })
 }
+
+export const mockAuthTokenRequestEmpty = () => {
+    nock(GITHUB_URL.AUTH_BASE_URL).post('/access_token').reply(200, undefined)
+
+}
+
+export const mockReposRequestEmpty = () => {
+    nock(GITHUB_URL.API_BASE_URL).get('/user/repos').reply(200, undefined)
+}
+
+export const mockReposRequestForbidden = () => {
+    nock(GITHUB_URL.API_BASE_URL).get('/user/repos').reply(401)
+}

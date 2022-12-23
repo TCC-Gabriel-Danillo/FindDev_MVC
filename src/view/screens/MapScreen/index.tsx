@@ -5,7 +5,7 @@ import { Button, Text } from '_/view/components';
 import makerImg from "_/assets/marker.png"
 import { styles } from "./styles"
 import * as Linking from 'expo-linking';
-import { COLORS, ICONS } from '_/constants';
+import { COLORS, ICONS, TEST_ID } from '_/constants';
 import { User } from '_/types';
 import { useAppDispatch, useAuthSelector, useUsersSelector } from '_/hooks';
 import { logoutAction } from '_/actions/authActions';
@@ -47,11 +47,13 @@ export function MapScreen() {
                 initialRegion={initialRegion}
                 maxZoomLevel={14}
                 minZoomLevel={3.5}
+                testID={TEST_ID.MAP}
             >
                 {
                     users.map(user => {
                         return (
                             <Marker
+                                testID={TEST_ID.MAP_MARKER}
                                 key={user.id}
                                 coordinate={{
                                     latitude: user.position.location.latitude,
@@ -60,7 +62,7 @@ export function MapScreen() {
                                 image={makerImg}
                             >
 
-                                <Callout onPress={() => handleCalloutPress(user)}>
+                                <Callout onPress={() => handleCalloutPress(user)} testID={TEST_ID.MAP_CALLOUT}>
                                     <View style={styles.calloutView}>
                                         <View style={styles.calloutImage}>
                                             <Image source={{ uri: user.photoUrl }} style={styles.imageMarker} />
@@ -75,7 +77,7 @@ export function MapScreen() {
                     })
                 }
             </MapView>
-            <Button onPress={signOutUser} style={styles.logoutButton}>
+            <Button onPress={signOutUser} style={styles.logoutButton} testID={TEST_ID.LOGOUT_BUTTON}>
                 <ICONS.LOGOUT size={32} color={COLORS.WHITE} />
             </Button>
         </View>

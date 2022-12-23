@@ -1,5 +1,5 @@
 import { alertError, mapAuthResponseToUser } from "_/helpers"
-import { addUser, authLoaded, authLoading } from "_/store/authStore"
+import { addUser, authLoaded, authLoading, removeUser } from "_/store/authStore"
 import { AuthCredentials } from "_/types"
 import { AppThunk } from "_/types/appThunk"
 
@@ -25,7 +25,7 @@ export const authenticateAction = (credentials: AuthCredentials): AppThunk => {
 
 export const logoutAction = (): AppThunk => {
     return async (dispatch) => {
-        dispatch(addUser())
+        dispatch(removeUser())
     }
 }
 
