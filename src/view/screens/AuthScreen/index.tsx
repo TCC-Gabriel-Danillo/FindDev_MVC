@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Image, ActivityIndicator } from 'react-native';
 import { Text, Button } from "_/view/components"
 import devImg from "_/assets/dev.png"
@@ -14,10 +14,10 @@ export const AuthScreen: React.FC = () => {
 
     const { promptAuth } = useAuthPrompt()
 
-    const signIn = async () => {
+    const signIn = useCallback(async () => {
         const credentials = await promptAuth()
         dispatch(authenticateAction(credentials))
-    }
+    }, [promptAuth, dispatch, authenticateAction])
 
     return (
         <View style={styles.container}>

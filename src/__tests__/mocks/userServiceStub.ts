@@ -38,7 +38,11 @@ export class UserServiceStub implements UserService {
     async getUserPosition(): Promise<Position> {
         return Promise.resolve(mockedPosition)
     }
-    async createUser(user: User) { }
-    async updateUser(user: User) { }
+    async createUser(user: User) {
+        return Promise.resolve()
+    }
+    async updateUser(user: User) {
+        return Promise.resolve()
+    }
 
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import MapView, { Marker, Callout, Region } from 'react-native-maps';
 import { Image, View } from 'react-native';
 import { Button, Text } from '_/view/components';
@@ -23,13 +23,18 @@ export function MapScreen() {
         longitudeDelta: 0.05,
     }
 
-    const handleCalloutPress = async (user: User) => {
+    const handleCalloutPress = useCallback(async (user: User) => {
         await Linking.openURL(user.profileUrl);
-    }
+    }, [])
 
-    const signOutUser = () => {
+    const signOutUser = useCallback(() => {
         dispatch(logoutAction())
-    }
+    }, [dispatch, logoutAction])
+
+    const onReagionChange = useCallback((region: Region) => {
+        const { latitude, longitude } = region
+        dispatch(getUsersAction({ latitude, longitude }))
+    }, [dispatch, getUsersAction])
 
     useEffect(() => {
         const { latitude, longitude } = initialRegion
@@ -40,10 +45,7 @@ export function MapScreen() {
     return (
         <View style={styles.container}>
             <MapView style={styles.map}
-                onRegionChangeComplete={(region: Region) => {
-                    const { latitude, longitude } = region
-                    dispatch(getUsersAction({ latitude, longitude }))
-                }}
+                onRegionChangeComplete={onReagionChange}
                 initialRegion={initialRegion}
                 maxZoomLevel={14}
                 minZoomLevel={3.5}

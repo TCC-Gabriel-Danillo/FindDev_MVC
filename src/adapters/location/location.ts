@@ -1,8 +1,7 @@
-import { Position } from "_/types";
+import { Position, LatLng } from "_/types";
 import { LocationAdapter, Bounds } from "./types";
 import * as Location from 'expo-location';
 import { generateGeoHash, generateHashBounds } from "_/helpers";
-import { LatLng } from "_/types";
 
 export class LocationAdapterImp implements LocationAdapter {
     async requestPermission() {
