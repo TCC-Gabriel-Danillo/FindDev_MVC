@@ -16,6 +16,9 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
     store?: AppStore
 }
 
+const authService = new AuthServiceStub()
+const userService = new UserServiceStub()
+
 export function renderWithProviders(
     ui: React.ReactElement,
     {
@@ -23,8 +26,8 @@ export function renderWithProviders(
         // Automatically create a store instance if no store was passed in
         store = setupStore({
             preloadedState,
-            authService: new AuthServiceStub(),
-            userService: new UserServiceStub()
+            authService,
+            userService
         }),
         ...renderOptions
     }: ExtendedRenderOptions = {}
