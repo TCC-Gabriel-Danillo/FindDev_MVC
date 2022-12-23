@@ -1,4 +1,4 @@
-import { fireEvent } from "@testing-library/react-native"
+import { fireEvent, render } from "@testing-library/react-native"
 import { act } from 'react-test-renderer';
 import { TEST_ID } from "_/constants"
 import { setupStore } from "_/store"
