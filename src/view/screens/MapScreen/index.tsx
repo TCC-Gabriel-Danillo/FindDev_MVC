@@ -64,7 +64,7 @@ export function MapScreen() {
                                 image={makerImg}
                             >
 
-                                <Callout onPress={() => handleCalloutPress(user)} testID={TEST_ID.MAP_CALLOUT}>
+                                <Callout onPress={function () { handleCalloutPress(user) }} testID={TEST_ID.MAP_CALLOUT}>
                                     <View style={styles.calloutView}>
                                         <View style={styles.calloutImage}>
                                             <Image source={{ uri: user.photoUrl }} style={styles.imageMarker} />
