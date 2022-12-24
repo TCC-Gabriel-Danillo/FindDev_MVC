@@ -18,9 +18,9 @@
 Esse é um aplicativo destinado para comunidade de desenvolvedores encontrar outros desenvolvedores próximos. 
 
 <div style="display: flex; flex-direction: row; margin: 0 0 50px 0">
-  <img src="assets/screen1.png" width="200px" style="margin: 0 5px"/> 
-  <img src="assets/screen2.png" width="200px" style="margin: 0 5px"/> 
-  <img src="assets/screen3.png" width="200px" style="margin: 0 5px"/> 
+  <img src="assets/screen1.png" height="350px" width="200px" style="margin: 0 5px"/> 
+  <img src="assets/screen2.png" height="350px" width="200px" style="margin: 0 5px"/> 
+  <img src="assets/screen3.png" height="350px" width="200px" style="margin: 0 5px"/> 
 </div>
 
 
