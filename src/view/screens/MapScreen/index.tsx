@@ -80,7 +80,7 @@ interface UserCalloutProps {
     onPress: (user: User) => void
 }
 function UserCallout({ user, onPress }: UserCalloutProps) {
-    const handleCalloutPress = () => useCallback(() => onPress(user), [])
+    const handleCalloutPress = useCallback(() => onPress(user), [])
     return (
         <Callout onPress={handleCalloutPress} testID={TEST_ID.MAP_CALLOUT}>
             <View style={styles.calloutView}>
