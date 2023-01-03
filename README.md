@@ -1,4 +1,4 @@
-# FindDev_MVC
+# FindDev MVC
 
 [![codecov](https://codecov.io/github/TCC-Gabriel-Danillo/FindDev_MVC/branch/main/graph/badge.svg?token=4655GHLADL)](https://codecov.io/github/TCC-Gabriel-Danillo/FindDev_MVC)
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=TCC-Gabriel-Danillo_FindDev_MVC&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=TCC-Gabriel-Danillo_FindDev_MVC)
@@ -18,9 +18,9 @@
 Esse é um aplicativo destinado para comunidade de desenvolvedores encontrar outros desenvolvedores próximos. 
 
 <div style="display: flex; flex-direction: row; margin: 0 0 50px 0">
-  <img src="assets/screen1.png" width="200px" style="margin: 0 5px"/> 
-  <img src="assets/screen2.png" width="200px" style="margin: 0 5px"/> 
-  <img src="assets/screen3.png" width="200px" style="margin: 0 5px"/> 
+  <img src="assets/screen1.png" height="350px" width="200px" style="margin: 0 5px"/> 
+  <img src="assets/screen2.png" height="350px" width="200px" style="margin: 0 5px"/> 
+  <img src="assets/screen3.png" height="350px" width="200px" style="margin: 0 5px"/> 
 </div>
 
 
@@ -57,7 +57,7 @@ APP_SCHEME=
 
 ### Executar
 
-Para executar o projeto, basta entrar na pasta src/View e executar o seguinte comando
+Para executar o projeto, basta entrar na pasta raiz do projeto e executar o seguinte comando:
 
 ```
   expo start
