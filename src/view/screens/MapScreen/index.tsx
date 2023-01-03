@@ -41,7 +41,6 @@ export function MapScreen() {
         dispatch(getUsersAction({ latitude, longitude }))
     }, [])
 
-
     return (
         <View style={styles.container}>
             <MapView style={styles.map}
@@ -63,17 +62,7 @@ export function MapScreen() {
                                 }}
                                 image={makerImg}
                             >
-
-                                <Callout onPress={function () { handleCalloutPress(user) }} testID={TEST_ID.MAP_CALLOUT}>
-                                    <View style={styles.calloutView}>
-                                        <View style={styles.calloutImage}>
-                                            <Image source={{ uri: user.photoUrl }} style={styles.imageMarker} />
-                                            <Text fontWeight='bold' style={styles.calloutTitle}>{user.username}</Text>
-                                        </View>
-                                        <Text style={styles.calloutContent}>Techs: {user.techs?.join(", ")}</Text>
-                                        {user.email && <Text style={styles.calloutContent}>Email: {user.email}</Text>}
-                                    </View>
-                                </Callout>
+                                <UserCallout user={user} onPress={handleCalloutPress} />
                             </Marker>
                         )
                     })
@@ -84,4 +73,24 @@ export function MapScreen() {
             </Button>
         </View>
     );
+}
+
+interface UserCalloutProps {
+    user: User,
+    onPress: (user: User) => void
+}
+function UserCallout({ user, onPress }: UserCalloutProps) {
+    const handleCalloutPress = () => onPress(user)
+    return (
+        <Callout onPress={handleCalloutPress} testID={TEST_ID.MAP_CALLOUT}>
+            <View style={styles.calloutView}>
+                <View style={styles.calloutImage}>
+                    <Image source={{ uri: user.photoUrl }} style={styles.imageMarker} />
+                    <Text fontWeight='bold' style={styles.calloutTitle}>{user.username}</Text>
+                </View>
+                <Text style={styles.calloutContent}>Techs: {user.techs?.join(", ")}</Text>
+                {user.email && <Text style={styles.calloutContent}>Email: {user.email}</Text>}
+            </View>
+        </Callout>
+    )
 }
